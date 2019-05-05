@@ -52,58 +52,55 @@ namespace Waterspillfromhole
 
     class Volume    //Class to to hold varibales and functions for dealing with the volume
     {
-        double x;       //Biggest side of the object
-        double y;       //Middle sized side of the object
-        double z;       //Smallest sized side of the object
-        double volume;  //Varibale to deal with volume
+        double BiggestSide;       //Biggest side of the object
+        double MidSide;       //Middle sized side of the object
+        double SmallestSide;       //Smallest sized side of the object
 
         public Volume (double width, double length, double depth)
         {//Constractor for the Volume class to input and order the varibales
-            x = width;
-            y = length;
-            z = depth;
+            BiggestSide = width;
+            MidSide = length;
+            SmallestSide = depth;
 
             //Area to deal with ordering the varaibles by size
-            if (x < y)
+            if (BiggestSide < MidSide)
             {
-                x += y;
-                y = x - y;
-                x -= y;
+                BiggestSide += MidSide;
+                MidSide = BiggestSide - MidSide;
+                BiggestSide -= MidSide;
             }
-            if (y < z)
+            if (MidSide < SmallestSide)
             {
-                y += z;
-                z = y - z;
-                y -= z;
-                if (x < y)
+                MidSide += SmallestSide;
+                SmallestSide = MidSide - SmallestSide;
+                MidSide -= SmallestSide;
+                if (BiggestSide < MidSide)
                 {
-                    x += y;
-                    y = x - y;
-                    x -= y;
+                    BiggestSide += MidSide;
+                    MidSide = BiggestSide - MidSide;
+                    BiggestSide -= MidSide;
                 }
             }
-
-            volume = x * y * z;
         }
 
         public double GetVolume () //Return volume of object
         {
-            return volume;
+            return BiggestSide * MidSide * SmallestSide;
         }
 
         public double BiggestNum() //Returns the biggest sized side of the object
         {
-            return x;
+            return BiggestSide;
         }
 
         public double MidNum()      //Returns the middle sized side of the object
         {
-            return y;
+            return MidSide;
         }
 
         public double SmallestNum() //Returns the smallest sized side of the object
         {
-            return z;
+            return SmallestSide;
         }
     }
 }
